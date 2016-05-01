@@ -23,16 +23,43 @@
 
 use Illuminate\Http\Request;
 
+/*
+|--------------------------------------------------------------------------
+| Tutorials and Examples
+|--------------------------------------------------------------------------
+Create
+Route::post()
+
+Read: whenever we submite our data to the form
+Route::get()
+	Variables
+	Route::get('hello/{name}', function($name){
+		echo 'Hello there ' . $name;
+	});
+
+	Send an item to put route
+	Route::get('test',function(){
+		echo '<form action="test" method="POST">';
+		echo '<input type="submit" value="submit">';
+		echo '<input type="submit" value="submit">';
+	});
+Update
+Route::put()
+
+Delete
+Route::delete()
+*/
+
 
 //need to read up on middleware.
 Route::group(['middleware' => ['web']], function () {
 	
 	//welcome page
-	Route::get('/', function () {
-	    return view('welcome');
-	})->middleware('guest');
+	Route::get('/', 'WelcomeController@nonUserFrontPage'
+		)->middleware('guest');
 
-	Route::get('/frontpages', 'FrontPageController@index');
+	Route::get('/frontpages', 'FrontPageController@userBaseFrontPage');
+	Route::get('/YourPictures', 'FrontPageController@YourPictures');
 	
 	//authentication
 	Route::auth();
@@ -43,16 +70,17 @@ Route::group(['middleware' => ['web']], function () {
 	
 	//=== Begin: Temporary Test Stuff ===
 	Route::get('/currentUser', 'UserController@currentUser');
+	Route::get('/test/{picture_id}', 'test@test' );
 	// === End: Temporary Test Stuff ===
 	
 	// === Begin: Post Page ===
-	//Route::get('/post/pic/{picture_id}','PostPage@ViewImage');
-	//Route::get('/post/story/{story_id}','PostPage@ViewStory');
+	Route::get('/post/picture/{picture_id}','PostPage@ViewImage');
+	Route::get('/post/story/{story_id}','PostPage@ViewStory');
+	// === End: Post Page ===
 	
-	//Route::get('/post/pic/{picture_id}', function() {
-	//	return view('my_view',['picture_id' => 1])
-	//})
-	
+	//=== Begin: Browse ===
+	Route::get('/browse', 'Browse@defaultBrowse');
+	//=== End: Browse === 
 	
 	//=== Begin: Uploading Pictures ===
 	//Display: upload standalone picture
