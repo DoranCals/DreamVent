@@ -16,7 +16,11 @@ class PostPage extends Controller
 {
     public function ViewImage($picture_id) {
 		$picture = Picture::find($picture_id);
-		return view('placeholder', ['picture' => $picture]); //TODO link view
+		$story_ids = GrabPics::where('picture_id', 11)->select('story_id')->get();
+		
+		return view('test', 
+			['Picture' => $picture,
+			 'story_ids' => $story_ids]); //TODO link view
 	}
 	
 	public function ViewStory ($story_id) {
