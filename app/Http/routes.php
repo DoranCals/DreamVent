@@ -78,6 +78,16 @@ Route::group(['middleware' => ['web']], function () {
 	
 	/*
 	* =====================
+	* User Page
+	* =====================
+	*/
+	Route::get('profile/{username}', function($username){
+		//echo $username;
+		return view('profile.foreign_profile');
+	});
+
+	/*
+	* =====================
 	* Temporary Test Stuff
 	* =====================
 	*/
@@ -85,13 +95,19 @@ Route::group(['middleware' => ['web']], function () {
 	//Route::get('/test/{picture_id}', 'test@test' );
 
 	
+
 	/*
 	* =====================
 	* Post Page (i.e. displaying content)
 	* =====================
 	*/
+	//Display
 	Route::get('/post/picture/{picture_id}','PostPage@ViewImage');
 	Route::get('/post/story/{story_id}','PostPage@ViewStory');
+	
+	//Comments
+	Route::post('/post/picture/{picture_id}','PostPage@StoreImageComment');
+	Route::post('/post/story/{story_id}','PostPage@StoreStoryComment');
 
 	
 	/*
@@ -103,6 +119,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/browse', 'Browse@defaultBrowse');
 	//users
 	Route::get('/browseUsers', 'Browse@defaultBrowseUser');
+
 
 	
 	/*
@@ -118,7 +135,6 @@ Route::group(['middleware' => ['web']], function () {
 
 	//View uploaded pictures
 	Route::get('/viewPictures', 'PictureController@show');
-
 	
 	/*
 	* =====================
