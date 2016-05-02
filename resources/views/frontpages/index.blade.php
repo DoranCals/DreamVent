@@ -13,8 +13,8 @@
                                 @foreach ($frontpages as $frontpages)
                                     <tr>
                                         <div class="table table-bordered bg-success">
-                                            <a href="{!! $frontpages->picture_link !!}">
-                                                {{$frontpages->picture_link}}</a></div>
+                                            <a href="/post/picture/{{$frontpages->picture_id}}">
+                                                {{$frontpages->picture_id}}</a></div>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -70,6 +70,10 @@ Route::group(['middleware' => ['web']], function () {
 	
 	//Check current user
 	Route::get('/currentUser', 'UserController@currentUser');
+ 
+ 	// === To Post Page ===
+	Route::get('/post/picture/{picture_id}', 'PostController@toPicturePost');
+	Route::get('/post/story/{story_id}', 'PostController@toStoryPost');
 	
 	//=== Uploading Pictures ===
 	//display form

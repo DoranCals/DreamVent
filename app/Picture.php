@@ -10,6 +10,9 @@ class Picture extends Model
 {
     //table
 	protected $table = 'PICTURE';
+
+  // Change primary key from 'id' to 'picture_id'
+  protected $primaryKey = 'picture_id';
 	
 	//dont automatically deal with timestamps
 	public $timestamps = false;
