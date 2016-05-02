@@ -45,7 +45,6 @@
                     <div class="panel panel-default">
                       <div class="panel-heading">description</div>
                         {{$picture->description}}
-                        /public{{$picture->picture_link}}
                       </div>
                     </div>
                 </div>

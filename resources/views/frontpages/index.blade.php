@@ -13,9 +13,10 @@
                                 @foreach ($frontpages as $frontpages)
                                     <tr>
                                         <div class="table table-bordered bg-success">
-                                            <a href="/post/picture/{{$frontpages->picture_id}}">
-                                                {{$frontpages->picture_id}}</a></div>
+                                            <a href="/post/picture/{{$frontpages->picture_id}}"> <img src="{{ URL::to('/') }}/public'/Pictures/0.21007100-1462114647a.jpg'"/> </a>                                                                                               
+                                            
                                     </tr>
+                                    {{ URL::to('/') }}/public'/Pictures/0.21007100-1462114647a.jpg'
                                 @endforeach
                             </tbody>
                         </table>
